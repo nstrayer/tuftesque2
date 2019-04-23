@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Quicksand');
+
+/* Global CSS variables that control appearance */
+* {
+  --body-padding: 8px;
+  /* How much we are off the left side */
+  --left-gutter: 5vw;
+  /* How much we are off the right */
+  --side-note-padding: 1em;
+  --right-gutter: 28vw;
+  --mobile-gutter: 5vw;
+  --mobile-padding: 0.5rem;
+  --code-background: lightgrey;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Hide the horizontal scroll bars caused by elements spilling over sides */
+body {
+  overflow-x: hidden;
+  font-size: 14px;
+  font-family: 'Quicksand', sans-serif;
+  max-width: 100vw;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  padding-top: 20px;
+}
+
+h2 {
+  padding-top: 15px;
+}
+
+h3 {
+  padding-top: 10px;
+}
+
+/* The main body of the document */
+.section.level2 {
+  margin-left: var(--left-gutter);
+  margin-right: var(--right-gutter);
+  position: relative;
+}
+
+/* Side note styles*/
+.side-note {
+  /* When viewing on a large screen stick sidenotes on... the side! */
+  position: absolute;
+  /* start sidenote at the end of the main body column */
+  left: calc(100% + var(--mobile-padding));
+  /* Make it go to right edge of screen */
+  width: calc(var(--right-gutter) - var(--mobile-padding));
+
+  /* Fonts are lighter and slanty to indicate they're different from the rest */
+  font-style: oblique;
+  font-weight: lighter;
+}
+
+.side-note img {
+  /* Don't let the side note plots or images be larger than the gutter width */
+  max-width: var(--right-gutter);
+}
+
+/* Add a small vertical line to the left of the code output */
+pre {
+  border-left: 2px solid black;
+  padding-left: 3px;
+}
+
+/* Code chunk styles */
+pre.r {
+  background: var(--code-background);
+  border-radius: 5px;
+  padding: 5px;
+  border-left: 0px solid black;
+}
+
+img {
+  max-width: 100vw;
+}
+
+/* Stretch a plot across the whole width of the screen */
+.full-width-plot img {
+  width: 100vw;
+  /* Need to figure out where the middle of the body column is to know where to place left side of image */
+  margin-left: calc(0px - var(--body-padding) - var(--left-gutter));
+}
+
+@media (max-width: 500px) {
+  /* Styles for when viewing on mobile */
+  .section.level2 {
+    /* Main body now is evenly placed in center*/
+    margin: 0 var(--mobile-gutter);
+  }
+
+  .side-note {
+    /* Side notes fall inline underneath */
+    position: relative;
+    margin-left: calc(50% - 50vw);
+    width: 100vw;
+    right: auto;
+    left: auto;
+    padding: var(--mobile-padding);
+    display: block;
+  }
+
+  /* Use psuedo elements to place a background spilling out around side note */
+  .side-note::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -10vw;
+    right: -10vw;
+    box-shadow: inset 0 0 4px black;
+  }
+
+  /* Adds a little plus icon to click and expand sidenote */
+  span.side-note::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    left: 50vw;
+    position: absolute;
+  }
+
+  /* When the user hovers over the shrunken side-note it expands */
+  span.side-note:hover {
+    height: auto;
+    font-size: 1em;
+  }
+
+  /* Hide the little hover icon */
+  span.side-note:hover::after {
+    width: 0px;
+  }
+
+  img {
+    max-width: calc(100vw - 2*var(--mobile-gutter));
+  }
+
+  /* Don't let images spill out of the main body */
+  .side-note img {
+    max-width: 100%;
+  }
+
+  .full-width-plot img {
+    margin: 0 calc(50% - 50vw);
+  }
+
+}
+
+.author,
+.date,
+.title {
+  margin: 0px 0px 3px 3px;
+}
+
+/* Add a horizonta divider after the date info to indicate start of document */
+.date::after{
+  content: '';
+  position: absolute;
+  left: -10vw;
+  right: -10vw;
+  margin-top: 2em;
+  height: 2px;
+  background-color: black;
+}
