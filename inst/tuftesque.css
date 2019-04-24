@@ -3,9 +3,7 @@
 /* Global CSS variables that control appearance */
 * {
   --body-padding: 8px;
-  /* How much we are off the left side */
   --left-gutter: 5vw;
-  /* How much we are off the right */
   --side-note-padding: 1em;
   --right-gutter: 28vw;
   --mobile-gutter: 5vw;
@@ -13,6 +11,8 @@
   --code-background: lightgrey;
   --expand-button-diameter: 25px;
   --page-color: white;
+  --side-note-color: #bdbdbd;
+  --animation-duration: 1000ms;
 }
 
 *,
@@ -55,21 +55,18 @@ h3 {
 }
 
 /* Side note styles*/
+/* When viewing on a large screen stick sidenotes on... the side! */
+/* Fonts are lighter and slanty to indicate they're different from the rest */
 .side-note {
-  /* When viewing on a large screen stick sidenotes on... the side! */
   position: absolute;
-  /* start sidenote at the end of the main body column */
   left: calc(100% + var(--mobile-padding));
-  /* Make it go to right edge of screen */
   width: calc(var(--right-gutter) - var(--mobile-padding));
-
-  /* Fonts are lighter and slanty to indicate they're different from the rest */
   font-style: oblique;
   font-weight: lighter;
 }
 
+/* Don't let the side note plots or images be larger than the gutter width */
 .side-note img {
-  /* Don't let the side note plots or images be larger than the gutter width */
   max-width: var(--right-gutter);
 }
 
@@ -87,6 +84,9 @@ pre.r {
   border-left: 0px solid black;
 }
 
+
+/* Plots and images are sized here */
+/* --------------------------------*/
 img {
   max-width: 100vw;
 }
@@ -98,49 +98,44 @@ img {
   margin-left: calc(0px - var(--body-padding) - var(--left-gutter));
 }
 
+
+/* Styles for when viewing on mobile */
+/* --------------------------------*/
+
 @media (max-width: 600px) {
-  /* Styles for when viewing on mobile */
+
+   /* Main body now is evenly placed in center*/
   .container {
-    /* Main body now is evenly placed in center*/
-    margin: 0 var(--mobile-gutter);
+    margin-left: var(--mobile-gutter);
+    margin-right: var(--mobile-gutter);
+    width: calc(100vw - 2*var(--mobile-gutter) - 2*var(--body-padding));
   }
 
+  /* Side notes fall inline instead of on side */
   .side-note {
-    /* Side notes fall inline underneath */
+    background-color: var(--page-color);
     position: relative;
+    display: block;
     margin-left: calc(50% - 50vw);
     width: 100vw;
     right: auto;
     left: auto;
-    display: block;
-    margin-top: calc(var(--expand-button-diameter));
-    border-top: 1px solid black;
-    padding-bottom: 5px;
-    font-size: 0px;
+    padding: var(--mobile-padding);
+    padding-top: calc(var(--expand-button-diameter)/2);
+    max-height: calc(var(--expand-button-diameter) + 1px);
+    overflow-y: hidden;
+    transition: max-height 100ms;
   }
 
+  /* Side notes with images need to have everything centered using grid */
   div.side-note {
     display: grid;
     justify-content: center;
   }
 
-  .side-note img {
-    height: 0px;
-  }
-
-  /* When the user hovers over the shrunken side-note it expands */
-  .side-note:hover,
-  .side-note:focus {
-    font-size: 1em;
-    margin-top: 0;
-    padding: var(--mobile-padding);
-    border-top: 0;
-    box-shadow: inset 0px 0px 4px black;
-  }
-
-  .side-note:hover img,
-  .side-note:focus img {
-    height: auto;
+  span.side-note{
+    padding-top: calc(var(--expand-button-diameter) + 1px);
+    padding-bottom: 0px;
   }
 
   /* Adds a little plus icon to click and expand sidenote */
@@ -153,18 +148,43 @@ img {
     border: 1px solid black;
     width: var(--expand-button-diameter);
     height: var(--expand-button-diameter);
-    top: calc(-1*var(--expand-button-diameter)/2);
     border-radius: 50%;
     background-color: var(--page-color);
     left: 50vw;
+  }
+
+  /* Horizontal line that the sidenote 'hides' behind */
+  .side-note::before {
+    content: '';
+    width: 100vw;
+    height: calc(var(--expand-button-diameter)/2);
+    left: 0;
+    background-color: var(--page-color);
+    border-bottom: 1px solid black;
+  }
+
+  .side-note::after,
+  .side-note::before {
+    top: 0;
     position: absolute;
   }
 
+  /* Interaction/ Animation logic */
+
+  /* When the user hovers over the shrunken side-note it expands */
+  .side-note:hover,
+  .side-note:active {
+    max-height: 100vh;
+    background-color: var(--side-note-color);
+    transition: max-height var(--animation-duration) ease-in-out;
+    padding-bottom: var(--mobile-padding);
+  }
+
+
   /* Hide the little hover icon */
   .side-note:hover::after,
-  .side-note:focus::after{
-    top: 0;
-    opacity: 0;
+  .side-note:active::after{
+    content: '-';
   }
 
   img {
