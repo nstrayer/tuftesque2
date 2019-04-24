@@ -18,6 +18,9 @@ knitr::knit_hooks$set(class = function(before, options, envir) {
 library(ggthemes)
 ```
 
+
+
+
 ## Hi there, again!
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
@@ -62,6 +65,7 @@ tibble::tibble( x = rpois(200, 40) ) %>%
 ```
 
 
+<span class = 'side-note' onClick = '' > Hi there hopefully this one works </span>
 
 
 
