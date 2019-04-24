@@ -35,20 +35,20 @@ h3 {
   font-family: 'Open Sans', sans-serif;
 }
 
-.section h1 {
-  padding: 20px 0px;
+.container h1 {
+  padding: 25px 0px 5px 0px;
 }
 
-.section h2 {
-  padding: 15px 0px;
+.container h2 {
+  padding: 20px 0px 5px 0px;
 }
 
-.section h3 {
-  padding: 20px 10px;
+.container h3 {
+  padding: 15px 0px 5px 0px;
 }
 
 /* The main body of the document */
-.section.level {
+.container {
   margin-left: var(--left-gutter);
   margin-right: var(--right-gutter);
   position: relative;
@@ -100,7 +100,7 @@ img {
 
 @media (max-width: 500px) {
   /* Styles for when viewing on mobile */
-  .section.level2 {
+  .container {
     /* Main body now is evenly placed in center*/
     margin: 0 var(--mobile-gutter);
   }

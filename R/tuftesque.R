@@ -6,10 +6,13 @@ tuftesque = function() {
     system.file(..., package = "tuftesque2")
   }
 
-  css    = pkg_resource("tuftesque.css")
+  css <- pkg_resource("tuftesque.css")
+  html_template <- pkg_resource('tuftesque.html')
 
   # call the base html_document function
   rmarkdown::html_document(
-    theme = NULL, css = css
+    theme = NULL,
+    css = css,
+    template = html_template
   )
 }
