@@ -152,8 +152,7 @@ img {
     border-radius: 50%;
     background-color: var(--page-color);
     left: 50vw;
-        cursor: pointer;
-
+    cursor: pointer;
   }
 
   /* Horizontal line that the sidenote 'hides' behind */
@@ -174,8 +173,7 @@ img {
 
   /* Interaction/ Animation logic */
 
-  /* When the user hovers over the shrunken side-note it expands */
-  .side-note:hover,
+  /* When the user taps the shrunken side-note it expands */
   .side-note.selected {
     max-height: 1000px;
     background-color: var(--side-note-color);
@@ -184,10 +182,7 @@ img {
     padding-bottom: var(--mobile-padding);
   }
 
-
-  /* Hide the little hover icon */
-  .side-note:hover::after,
-  .side-note.selected {
+  .side-note.selected::after {
     content: '-';
   }
 
