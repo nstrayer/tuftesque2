@@ -129,7 +129,8 @@ img {
   }
 
   /* When the user hovers over the shrunken side-note it expands */
-  .side-note:hover {
+  .side-note:hover,
+  .side-note:focus {
     font-size: 1em;
     margin-top: 0;
     padding: var(--mobile-padding);
@@ -137,7 +138,8 @@ img {
     box-shadow: inset 0px 0px 4px black;
   }
 
-  .side-note:hover img {
+  .side-note:hover img,
+  .side-note:focus img {
     height: auto;
   }
 
@@ -159,7 +161,8 @@ img {
   }
 
   /* Hide the little hover icon */
-  .side-note:hover::after {
+  .side-note:hover::after,
+  .side-note:focus::after{
     top: 0;
     opacity: 0;
   }
