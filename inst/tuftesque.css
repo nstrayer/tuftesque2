@@ -98,7 +98,7 @@ img {
   margin-left: calc(0px - var(--body-padding) - var(--left-gutter));
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   /* Styles for when viewing on mobile */
   .container {
     /* Main body now is evenly placed in center*/
@@ -185,7 +185,7 @@ img {
   margin: 0px 0px 3px 3px;
 }
 
-/* Add a horizonta divider after the date info to indicate start of document */
+/* Add a horizontal divider after the date info to indicate start of document */
 .date::after{
   content: '';
   position: absolute;
