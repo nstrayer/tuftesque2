@@ -7,19 +7,8 @@ output:
 ---
 
 ```{r setup, echo=FALSE}
-knitr::knit_hooks$set(class = function(before, options, envir) {
-  if(before){
-    sprintf("<div class = '%s'>", options$class)
-  }else{
-    "</div>"
-  }
-})
-# install.packages("ggthemes")
 library(ggthemes)
 ```
-
-
-
 
 ## Hi there, again!
 

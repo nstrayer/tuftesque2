@@ -44,5 +44,14 @@
     <div class = 'container'>
         $body$
     </div>
+
+    <script>
+      window.onload = function () {
+        const side_notes = document.getElementsByClassName('side-note');
+        for (let note of side_notes) {
+          note.onClick = () => void(0);
+        }
+      }
+    </script>
   </body>
 </html>
