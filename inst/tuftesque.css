@@ -116,7 +116,7 @@ img {
     background-color: var(--page-color);
     position: relative;
     display: block;
-    margin-left: calc(50% - 50vw);
+    margin: 1rem auto 1rem calc(50% - 50vw);
     width: 100vw;
     right: auto;
     left: auto;
@@ -152,7 +152,8 @@ img {
     border-radius: 50%;
     background-color: var(--page-color);
     left: 50vw;
-    cursor: pointer;
+        cursor: pointer;
+
   }
 
   /* Horizontal line that the sidenote 'hides' behind */
