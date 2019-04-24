@@ -176,7 +176,7 @@ img {
 
   /* When the user hovers over the shrunken side-note it expands */
   .side-note:hover,
-  .side-note:active {
+  .side-note.selected {
     max-height: 1000px;
     background-color: var(--side-note-color);
     -webkit-transition: max-height var(--animation-duration) ease-in-out;
@@ -187,7 +187,7 @@ img {
 
   /* Hide the little hover icon */
   .side-note:hover::after,
-  .side-note:active::after{
+  .side-note.selected {
     content: '-';
   }
 

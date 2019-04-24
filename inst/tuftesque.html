@@ -46,12 +46,24 @@
     </div>
 
     <script>
-      window.onload = function () {
-        const side_notes = document.getElementsByClassName('side-note');
-        for (let note of side_notes) {
-          note.setAttribute("onclick","void(0);");
-        }
+    window.onload = function () {
+      const side_notes = document.getElementsByClassName('side-note');
+      for (let note of side_notes) {
+        note.addEventListener(
+          "click", function(el) {
+            const note_classes = this.classList;
+            const is_selected = note_classes.contains('selected');
+            if(is_selected){
+              console.log('node is selected already')
+              note_classes.remove('selected');
+            } else {
+              console.log('node is being selected')
+              note_classes.add('selected');
+            }
+          });
+
       }
-    </script>
+    }
+  </script>
   </body>
 </html>
