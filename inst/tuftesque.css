@@ -152,6 +152,7 @@ img {
     border-radius: 50%;
     background-color: var(--page-color);
     left: 50vw;
+    cursor: pointer;
   }
 
   /* Horizontal line that the sidenote 'hides' behind */
