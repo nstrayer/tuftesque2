@@ -124,6 +124,7 @@ img {
     padding-top: calc(var(--expand-button-diameter)/2);
     max-height: calc(var(--expand-button-diameter) + 1px);
     overflow-y: hidden;
+    -webkit-transition: max-height 100ms;
     transition: max-height 100ms;
   }
 
@@ -174,8 +175,9 @@ img {
   /* When the user hovers over the shrunken side-note it expands */
   .side-note:hover,
   .side-note:active {
-    max-height: 100vh;
+    max-height: 1000px;
     background-color: var(--side-note-color);
+    -webkit-transition: max-height var(--animation-duration) ease-in-out;
     transition: max-height var(--animation-duration) ease-in-out;
     padding-bottom: var(--mobile-padding);
   }
