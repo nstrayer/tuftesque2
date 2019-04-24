@@ -11,6 +11,8 @@
   --mobile-gutter: 5vw;
   --mobile-padding: 0.5rem;
   --code-background: lightgrey;
+  --expand-button-diameter: 25px;
+  --page-color: white;
 }
 
 *,
@@ -33,20 +35,20 @@ h3 {
   font-family: 'Open Sans', sans-serif;
 }
 
-h1 {
-  padding-top: 20px;
+.section h1 {
+  padding: 20px 0px;
 }
 
-h2 {
-  padding-top: 15px;
+.section h2 {
+  padding: 15px 0px;
 }
 
-h3 {
-  padding-top: 10px;
+.section h3 {
+  padding: 20px 10px;
 }
 
 /* The main body of the document */
-.section.level2 {
+.section.level {
   margin-left: var(--left-gutter);
   margin-right: var(--right-gutter);
   position: relative;
@@ -110,41 +112,56 @@ img {
     width: 100vw;
     right: auto;
     left: auto;
-    padding: var(--mobile-padding);
     display: block;
+    margin-top: calc(var(--expand-button-diameter));
+    border-top: 1px solid black;
+    padding-bottom: 5px;
+    font-size: 0px;
   }
 
-  /* Use psuedo elements to place a background spilling out around side note */
-  .side-note::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -10vw;
-    right: -10vw;
-    box-shadow: inset 0 0 4px black;
+  div.side-note {
+    display: grid;
+    justify-content: center;
+  }
+
+  .side-note img {
+    height: 0px;
+  }
+
+  /* When the user hovers over the shrunken side-note it expands */
+  .side-note:hover {
+    font-size: 1em;
+    margin-top: 0;
+    padding: var(--mobile-padding);
+    border-top: 0;
+    box-shadow: inset 0px 0px 4px black;
+  }
+
+  .side-note:hover img {
+    height: auto;
   }
 
   /* Adds a little plus icon to click and expand sidenote */
-  span.side-note::after {
-    content: '';
-    width: 20px;
-    height: 20px;
+  .side-note::after {
+    content: '+';
+    font-size: 2rem;
+    line-height: calc(5px + var(--expand-button-diameter)/2);
+    font-style: normal;
+    text-align: center;
+    border: 1px solid black;
+    width: var(--expand-button-diameter);
+    height: var(--expand-button-diameter);
+    top: calc(-1*var(--expand-button-diameter)/2);
     border-radius: 50%;
-    background-color: red;
+    background-color: var(--page-color);
     left: 50vw;
     position: absolute;
   }
 
-  /* When the user hovers over the shrunken side-note it expands */
-  span.side-note:hover {
-    height: auto;
-    font-size: 1em;
-  }
-
   /* Hide the little hover icon */
-  span.side-note:hover::after {
-    width: 0px;
+  .side-note:hover::after {
+    top: 0;
+    opacity: 0;
   }
 
   img {
