@@ -49,7 +49,7 @@
       window.onload = function () {
         const side_notes = document.getElementsByClassName('side-note');
         for (let note of side_notes) {
-          note.onClick = () => void(0);
+          note.setAttribute("onclick","void(0);");
         }
       }
     </script>
