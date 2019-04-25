@@ -69,8 +69,6 @@ tibble::tibble( x = rpois(200, 40) ) %>%
 ```
 
 
-<span class = 'side-note' onClick = '' > Hi there hopefully this one works </span>
-
 
 
 ## What about a full width plot, though?
