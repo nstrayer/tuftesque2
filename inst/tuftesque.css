@@ -141,13 +141,10 @@ img,
 
   /* Adds a little plus icon to click and expand sidenote */
   .side-note::after {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f078";
-    text-align: center;
-    line-height: var(--expand-button-diameter);
-    font-size: 1.65rem;
-    font-style: normal;
+    content: '';
+    background: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='1.5rem' height='1.5rem' fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'> <path d='M30 20 L16 8 2 20'/></svg>");
+    background-position: center;
+    background-repeat: no-repeat;
     border: 1px solid black;
     width: var(--expand-button-diameter);
     height: var(--expand-button-diameter);
@@ -214,16 +211,20 @@ img,
 
 .intro .author::before,
 .intro .date::before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  padding-right: 0.5em;
+  content: '';
+  padding: 0 0.75em;
 }
 
 .intro .author::before {
-  content: "\f007";
+  background: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='1rem' height='1rem' fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'> <path d='M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z'/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 
 .intro .date::before {
-  content: "\f133";
+  background: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='1rem' height='1.5rem' fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'> <path d='M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9'/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
