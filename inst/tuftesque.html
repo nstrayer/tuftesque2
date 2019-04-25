@@ -6,12 +6,15 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 
     <title>$title$</title>
   </head>
 
   <body>
-    $if(title)$
+    <div class = 'intro'>
+      $if(title)$
     <h1 class="title toc-ignore">$title$</h1>
     $if(subtitle)$
     <h3 class="subtitle">$subtitle$</h3>
@@ -40,6 +43,8 @@
     </div>
     $endif$
     $endif$
+    </div>
+
 
     <div class = 'container'>
 $body$

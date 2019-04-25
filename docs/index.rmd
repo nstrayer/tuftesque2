@@ -7,8 +7,6 @@ output:
 ---
 
 ```{r setup, echo=FALSE}
-library(ggthemes)
-
 knitr::knit_hooks$set(class = function(before, options, envir) {
   if(before){
     sprintf("<div class = '%s'>", options$class)
@@ -47,13 +45,9 @@ tibble::tibble( x = rnorm(200) ) %>%
 ```{r}
 y <- 5
 x <- 3
-x+y
+x + y
 ```
 
-```{r}
-testing <- 'It would be great if this worked but who knows'
-print(testing)
-```
  
 ### That's really a bare-minimum though...
 
@@ -85,7 +79,7 @@ tibble::tibble(
   theme_minimal() +
   labs(x = '', y = '') +
   guides(color = FALSE) +
-  theme_wsj()
+  theme_minimal()
 ```
 
 ## I guess that's good... 

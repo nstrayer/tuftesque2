@@ -5,11 +5,12 @@
   --left-gutter: 5vw;
   --right-gutter: 28vw;
   --mobile-gutter: 5vw;
-  --code-background: lightgrey;
   --expand-button-diameter: 2rem;
-  --page-color: white;
-  --side-note-color: #bdbdbd;
-  --animation-duration: 1000ms;
+  --animation-duration: 500ms;
+  --page-color: #fffaec;
+  --text-color: #46585d;
+  --code-background: #e7e7e7;
+  --side-note-color: #8f8f8f2b;
 }
 
 *,
@@ -25,6 +26,8 @@ body {
   font-family: "Quicksand", sans-serif;
   max-width: 100vw;
   margin: 0;
+  background-color: var(--page-color);
+  color: var(text-color);
 }
 
 h1,
@@ -138,11 +141,12 @@ img,
 
   /* Adds a little plus icon to click and expand sidenote */
   .side-note::after {
-    content: "\002B";
-    vertical-align: middle;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f078";
     text-align: center;
-    line-height: calc(var(--expand-button-diameter) - 9px);
-    font-size: 2rem;
+    line-height: var(--expand-button-diameter);
+    font-size: 1.65rem;
     font-style: normal;
     border: 1px solid black;
     width: var(--expand-button-diameter);
@@ -151,6 +155,7 @@ img,
     background-color: var(--page-color);
     left: calc(50vw - var(--expand-button-diameter)/2);
     cursor: pointer;
+    transition: transform var(--animation-duration) cubic-bezier(0.53, 0.2, 0.52, 1.44);
   }
 
   /* Horizontal line that the sidenote 'hides' behind */
@@ -178,7 +183,7 @@ img,
   }
 
   .side-note.selected::after {
-    content: "-";
+    transform: rotate(-180deg);
   }
 
   .full-width-plot img {
@@ -202,3 +207,23 @@ img,
   height: 2px;
   background-color: black;
 }
+
+.intro {
+  padding: 0.5em 1em;
+}
+
+.intro .author::before,
+.intro .date::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 0.5em;
+}
+
+.intro .author::before {
+  content: "\f007";
+}
+
+.intro .date::before {
+  content: "\f133";
+}
+
