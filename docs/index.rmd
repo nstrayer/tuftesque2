@@ -8,6 +8,14 @@ output:
 
 ```{r setup, echo=FALSE}
 library(ggthemes)
+
+knitr::knit_hooks$set(class = function(before, options, envir) {
+  if(before){
+    sprintf("<div class = '%s'>", options$class)
+  }else{
+    "</div>"
+  }
+})
 ```
 
 ## Hi there, again!!
@@ -33,13 +41,20 @@ tibble::tibble( x = rnorm(200) ) %>%
 ```
 ::::: 
 
+
 ## Of course code chunks work properly...
 
 ```{r}
-6 + 5
+y <- 5
+x <- 3
+x+y
 ```
 
-
+```{r}
+testing <- 'It would be great if this worked but who knows'
+print(testing)
+```
+ 
 ### That's really a bare-minimum though...
 
 There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.

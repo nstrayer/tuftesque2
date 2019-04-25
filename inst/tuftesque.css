@@ -1,15 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Quicksand');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Quicksand");
 
 /* Global CSS variables that control appearance */
 * {
-  --body-padding: 8px;
   --left-gutter: 5vw;
-  --side-note-padding: 1em;
   --right-gutter: 28vw;
   --mobile-gutter: 5vw;
-  --mobile-padding: 0.5rem;
   --code-background: lightgrey;
-  --expand-button-diameter: 25px;
+  --expand-button-diameter: 2rem;
   --page-color: white;
   --side-note-color: #bdbdbd;
   --animation-duration: 1000ms;
@@ -25,26 +22,30 @@
 body {
   overflow-x: hidden;
   font-size: 14px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   max-width: 100vw;
+  margin: 0;
 }
 
 h1,
 h2,
 h3 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
+  padding-bottom: 5px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .container h1 {
-  padding: 25px 0px 5px 0px;
+  padding-top: 25px;
 }
 
 .container h2 {
-  padding: 20px 0px 5px 0px;
+  padding-top: 20px;
 }
 
 .container h3 {
-  padding: 15px 0px 5px 0px;
+  padding-top: 15px;
 }
 
 /* The main body of the document */
@@ -59,15 +60,11 @@ h3 {
 /* Fonts are lighter and slanty to indicate they're different from the rest */
 .side-note {
   position: absolute;
-  left: calc(100% + var(--mobile-padding));
-  width: calc(var(--right-gutter) - var(--mobile-padding));
+  left: 100%;
+  width: var(--right-gutter);
   font-style: oblique;
   font-weight: lighter;
-}
-
-/* Don't let the side note plots or images be larger than the gutter width */
-.side-note img {
-  max-width: var(--right-gutter);
+  padding: 0.5rem;
 }
 
 /* Add a small vertical line to the left of the code output */
@@ -84,48 +81,47 @@ pre.r {
   border-left: 0px solid black;
 }
 
-
 /* Plots and images are sized here */
 /* --------------------------------*/
-img {
-  max-width: 100vw;
+
+/* Don't let images spill out of the main body */
+img,
+.side-note img {
+  max-width: 100%;
 }
 
 /* Stretch a plot across the whole width of the screen */
 .full-width-plot img {
   width: 100vw;
   max-width: 100vw;
-  margin-left: calc(0px - var(--body-padding) - var(--left-gutter));
+  margin-left: calc(0px - var(--left-gutter));
 }
-
 
 /* Styles for when viewing on mobile */
 /* --------------------------------*/
 
 @media (max-width: 600px) {
-
-   /* Main body now is evenly placed in center*/
+  /* Main body now is evenly placed in center*/
   .container {
     margin-left: var(--mobile-gutter);
     margin-right: var(--mobile-gutter);
-    width: calc(100vw - 2*var(--mobile-gutter) - 2*var(--body-padding));
+    width: calc(100vw - 2*var(--mobile-gutter));
   }
 
   /* Side notes fall inline instead of on side */
   .side-note {
     background-color: var(--page-color);
     position: relative;
-    display: block;
+    display: inline-block;
     margin: 1rem auto 1rem calc(50% - 50vw);
     width: 100vw;
-    right: auto;
     left: auto;
-    padding: var(--mobile-padding);
     padding-top: calc(var(--expand-button-diameter)/2);
     max-height: calc(var(--expand-button-diameter) + 1px);
     overflow-y: hidden;
-    -webkit-transition: max-height 100ms;
-    transition: max-height 100ms;
+    -webkit-transition: max-height var(--animation-duration) ease-in-out;
+    transition: max-height var(--animation-duration) ease-in-out,
+      background-color var(--animation-duration) ease-in-out;
   }
 
   /* Side notes with images need to have everything centered using grid */
@@ -134,30 +130,31 @@ img {
     justify-content: center;
   }
 
-  span.side-note{
-    padding-top: calc(var(--expand-button-diameter) + 1px);
+  span.side-note {
+    padding-top: var(--expand-button-diameter);
     padding-bottom: 0px;
   }
 
   /* Adds a little plus icon to click and expand sidenote */
   .side-note::after {
-    content: '+';
-    font-size: 2rem;
-    line-height: calc(5px + var(--expand-button-diameter)/2);
-    font-style: normal;
+    content: "\002B";
+    vertical-align: middle;
     text-align: center;
+    line-height: calc(var(--expand-button-diameter) - 9px);
+    font-size: 2rem;
+    font-style: normal;
     border: 1px solid black;
     width: var(--expand-button-diameter);
     height: var(--expand-button-diameter);
     border-radius: 50%;
     background-color: var(--page-color);
-    left: 50vw;
+    left: calc(50vw - var(--expand-button-diameter)/2);
     cursor: pointer;
   }
 
   /* Horizontal line that the sidenote 'hides' behind */
   .side-note::before {
-    content: '';
+    content: "";
     width: 100vw;
     height: calc(var(--expand-button-diameter)/2);
     left: 0;
@@ -177,28 +174,15 @@ img {
   .side-note.selected {
     max-height: 1000px;
     background-color: var(--side-note-color);
-    -webkit-transition: max-height var(--animation-duration) ease-in-out;
-    transition: max-height var(--animation-duration) ease-in-out;
-    padding-bottom: var(--mobile-padding);
   }
 
   .side-note.selected::after {
-    content: '-';
-  }
-
-  img {
-    max-width: calc(100vw - 2*var(--mobile-gutter));
-  }
-
-  /* Don't let images spill out of the main body */
-  .side-note img {
-    max-width: 100%;
+    content: "-";
   }
 
   .full-width-plot img {
-     margin: 0 calc(-50vw + 50%);
+    margin: 0 calc(-50vw + 50%);
   }
-
 }
 
 .author,
@@ -208,8 +192,8 @@ img {
 }
 
 /* Add a horizontal divider after the date info to indicate start of document */
-.date::after{
-  content: '';
+.date::after {
+  content: "";
   position: absolute;
   left: -10vw;
   right: 0;
