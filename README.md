@@ -8,7 +8,7 @@ devtools::install_github('nstrayer/tuftesque2')
 
 ## Use
 
-Replace the `output` value in your `.Rmd` header to be `tuftesque2:tuftesque`: 
+Replace the `output` value in your `.Rmd` header to be `tuftesque2::tuftesque`... 
 
 __Before:__
 
