@@ -14,6 +14,10 @@ knitr::knit_hooks$set(class = function(before, options, envir) {
     "</div>"
   }
 })
+
+# knitr::opts_chunk$set(
+#   eval = FALSE)
+
 ```
 
 ## Hi there, again!!
@@ -42,12 +46,21 @@ tibble::tibble( x = rnorm(200) ) %>%
 
 ## Of course code chunks work properly...
 
-```{r}
+```{r, eval=TRUE}
 y <- 5
 x <- 3
 x + y
 ```
 
+
+And non-r code chunks?
+
+```
+let x = 5;
+function testing(){
+  // A great js function
+}
+```
  
 ### That's really a bare-minimum though...
 
