@@ -152,6 +152,7 @@ img,
     background-color: var(--page-color);
     left: calc(50vw - var(--expand-button-diameter)/2);
     cursor: pointer;
+    transform: rotate(-180deg);
     transition: transform var(--animation-duration) cubic-bezier(0.53, 0.2, 0.52, 1.44);
   }
 
@@ -180,7 +181,7 @@ img,
   }
 
   .side-note.selected::after {
-    transform: rotate(-180deg);
+    transform: rotate(0deg);
   }
 
   .full-width-plot img {
