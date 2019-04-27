@@ -81,7 +81,7 @@ tibble::tibble( x = rpois(200, 40) ) %>%
 ```
 
 
-## This one even has a lightbox on hover
+## This one even has a lightbox on click!
 
 ```{r, echo=FALSE, fig.height = 4, fig.width=8, class = 'lightbox'}
 tibble::tibble( x = rnorm(200) ) %>% 
