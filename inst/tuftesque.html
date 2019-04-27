@@ -82,6 +82,33 @@ $body$
           });
 
       }
+
+
+      const sidelightboxes = document.getElementsByClassName('side-note lightbox');
+      for (let sidelightbox of sidelightboxes) {
+        sidelightbox.addEventListener(
+          "click", function(el) {
+          const sidelightbox_classes = this.classList;
+          const is_selected = sidelightbox_classes.contains('selected');
+          if (window.matchMedia("(min-width: 600px)").matches) {
+              if(is_selected){
+                sidelightbox_classes.remove('selected');
+              } else {
+                sidelightbox_classes.add('selected');
+              }
+            } else {
+               if(is_selected){
+                sidelightbox_classes.add('lightbox')
+                sidelightbox_classes.remove('selected');
+              } else {
+                sidelightbox_classes.remove('lightbox')
+                sidelightbox_classes.add('selected');
+              }
+            }
+          });
+
+      }
+
     }
   </script>
   </body>

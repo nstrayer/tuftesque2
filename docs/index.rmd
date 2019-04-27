@@ -89,6 +89,20 @@ tibble::tibble( x = rnorm(200) ) %>%
   geom_histogram(bins = 100)
 ```
 
+## A side note plot can even be lightboxed for better display !
+```{r, class= 'side-note lightbox', echo=FALSE}
+library(magrittr)
+library(ggplot2)
+tibble::tibble( x = rnorm(200) ) %>% 
+  ggplot(aes(x = x)) + 
+  geom_histogram(bins = 100)
+```
+
+This is the boring Lorem Ipsum: Nequeporro minim for vitae so dolores. Tempor quaerat and exercitationem aspernatur, yet iste. Non quo or exercitation. Eu aut for error deserunt. Veniam laboriosam sed. Iure ex vel. 
+
+Reprehenderit consequatur autem so cillum consectetur. Consectetur duis iste. Si fugiat, yet sunt so do aliqua. In commodi or aspernatur deserunt. Ullam. Nulla laborum or nemo iste. 
+
+Incididunt ipsa so magna non sint exercitation. Quis magnam. Occaecat incididunt. Inventore dolor or vitae. Iste ut but ullamco and si. Laboris deserunt nor ratione for velit iure nostrum, or et. Nostrud ab nor incidunt nor ullamco. Fugiat eius or numquam, mollit for et. Ullam laboris exercitationem sed nor sequi culpa nor et. Quo dolores minim. Tempor anim. Magna veniam or illum magnam, minim. Inventore dolores incidunt dolor iste. Architecto inventore, eiusmod. Lorem quae for occaecat exercitationem aliqua and illum. Reprehenderit magna nor ex for deserunt nulla commodo. Omnis explicabo eum aliquid qui irure. Velit ullamco modi eos nisi. Aliquam dolor, and aut. 
 
 
 ## What about a full width plot, though?

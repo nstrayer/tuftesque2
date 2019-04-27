@@ -253,8 +253,14 @@ img,
 
 .lightbox.selected img {
 	/** Pad the lightbox image */
-	min-width: 50%;
-	max-width: 90%;
-	max-height: 80%;
-	margin-top: 2%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    max-height: 90%;
+    height: auto;
+    max-width: 90%;
 }
