@@ -63,6 +63,22 @@ tibble::tibble( x = rnorm(200) ) %>%
 <img width="745" alt="Screen Shot 2019-04-25 at 3 18 31 PM" src="https://user-images.githubusercontent.com/6764693/56765820-8f03d500-676d-11e9-838a-84286daa1b75.png">
 
 
+
+## Lightboxes
+
+Thanks to [Félix M.](https://github.com/Felixmil), if you want to allow the reader to view a plot without any distraction you can make it lightbox-able. To do this simply add the `class` of `'lightbox'` to the chunk generating the plot. 
+
+````
+```{r, class = 'lightbox'}
+ggplot(data, aes(x = x)) + 
+  geom_histogram(bins = 100)
+```
+````
+
+![lightbox demo](https://user-images.githubusercontent.com/6764693/56853654-78d25200-68f0-11e9-9838-f2a7de5ceb31.gif)
+
+
+ 
 ## Warning
 
 This is under active development, use at your own peril. 
