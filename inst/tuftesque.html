@@ -66,6 +66,22 @@ $body$
           });
 
       }
+
+
+      const lightboxes = document.getElementsByClassName('lightbox');
+      for (let box of lightboxes) {
+        box.addEventListener(
+          "click", function(el) {
+            const box_classes = this.classList;
+            const is_selected = box_classes.contains('selected');
+            if(is_selected){
+              box_classes.remove('selected');
+            } else {
+              box_classes.add('selected');
+            }
+          });
+
+      }
     }
   </script>
   </body>
