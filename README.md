@@ -78,6 +78,16 @@ ggplot(data, aes(x = x)) +
 ![lightbox demo](https://user-images.githubusercontent.com/6764693/56853654-78d25200-68f0-11e9-9838-f2a7de5ceb31.gif)
 
 
+You can even stack these with sidenote plots for even more convenience. 
+
+````
+```{r, class = 'side-note lightbox'}
+ggplot(data, aes(x = x)) + 
+  geom_histogram(bins = 100)
+```
+````
+
+
  
 ## Warning
 
