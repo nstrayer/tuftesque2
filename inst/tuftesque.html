@@ -82,6 +82,21 @@ $body$
           });
 
       }
+
+      const sidelightboxes = document.getElementsByClassName('side-note lightbox');
+      for (let sidebox of sidelightboxes) {
+        sidebox.addEventListener(
+          "click", function(el) {
+            const sidebox_classes = this.classList;
+            const is_selected = sidebox_classes.contains('selected');
+            if(is_selected){
+              sidebox_classes.remove('selected');
+            } else {
+              sidebox_classes.add('selected');
+            }
+          });
+
+      }
     }
   </script>
   </body>
