@@ -8,20 +8,35 @@ output:
 
 ```{r setup, echo=FALSE}
 knitr::knit_hooks$set(class = function(before, options, envir) {
-  if(before){
-    sprintf("<div class = '%s'>", options$class)
-  }else{
-    "</div>"
+  is_sidenote <- grepl('side-note', options$class)
+  is_lightbox <- grepl('lightbox', options$class)
+  
+  # If we have both a side-note and a lightbox tag at the same time put two divs instead of one
+  # The first one is the side-note div and the second is the lightbox div. 
+  if (before) {
+    if (is_sidenote & is_lightbox) {
+      open_tag <- "<div class = 'side-note'><div class = 'lightbox'>";
+    } else {
+      open_tag <- sprintf("<div class = '%s'>", options$class)
+    }
+    return(open_tag)
+  } else{ 
+    if (is_sidenote & is_lightbox) {
+      close_tag <- "</div> </div>";
+    } else {
+      close_tag <- "</div>";
+    }
+    return(close_tag)
   }
 })
 
 
-knitr::knit_hooks$set(document = function(x){
-  
-  print('running document hook')
-  print(x)
-  x
-})
+# knitr::knit_hooks$set(document = function(x){
+#   
+#   print('running document hook')
+#   print(x)
+#   x
+# })
 
 ```
 
