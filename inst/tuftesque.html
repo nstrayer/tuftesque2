@@ -50,63 +50,30 @@ $body$
 
     <script>
     window.onload = function () {
-      const side_notes = document.getElementsByClassName('side-note');
-      for (let note of side_notes) {
-        note.addEventListener(
-          "click", function(el) {
-            const note_classes = this.classList;
-            const is_selected = note_classes.contains('selected');
-            if(is_selected){
-              console.log('node is selected already')
-              note_classes.remove('selected');
-            } else {
-              console.log('node is being selected')
-              note_classes.add('selected');
-            }
-          });
 
+      const selection_switcher = function(event){
+        const element_classes = this.classList;
+
+        // This stops us from triggering the click event on the
+        // sidenote div when we click the lightbox div to avoid
+        // an ugly double animation of opening the sidebox.
+        event.stopPropagation();
+
+        if(element_classes.contains('selected')){
+          element_classes.remove('selected');
+        } else {
+          element_classes.add('selected');
+        }
       }
 
+      const side_notes = document.getElementsByClassName('side-note');
+      for (let note of side_notes) {
+        note.addEventListener("click", selection_switcher);
+      }
 
       const lightboxes = document.getElementsByClassName('lightbox');
       for (let box of lightboxes) {
-        box.addEventListener(
-          "click", function(el) {
-            const box_classes = this.classList;
-            const is_selected = box_classes.contains('selected');
-            if(is_selected){
-              box_classes.remove('selected');
-            } else {
-              box_classes.add('selected');
-            }
-          });
-
-      }
-
-
-      const sidelightboxes = document.getElementsByClassName('side-note lightbox');
-      for (let sidelightbox of sidelightboxes) {
-        sidelightbox.addEventListener(
-          "click", function(el) {
-          const sidelightbox_classes = this.classList;
-          const is_selected = sidelightbox_classes.contains('selected');
-          if (window.matchMedia("(min-width: 600px)").matches) {
-              if(is_selected){
-                sidelightbox_classes.remove('selected');
-              } else {
-                sidelightbox_classes.add('selected');
-              }
-            } else {
-               if(is_selected){
-                sidelightbox_classes.add('lightbox')
-                sidelightbox_classes.remove('selected');
-              } else {
-                sidelightbox_classes.remove('lightbox')
-                sidelightbox_classes.add('selected');
-              }
-            }
-          });
-
+        box.addEventListener("click", selection_switcher);
       }
 
     }
