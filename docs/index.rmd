@@ -6,6 +6,12 @@ output:
   tuftesque2::tuftesque
 ---
 
+```{r setup, echo = FALSE}
+
+# knitr::opts_chunk$set(eval = FALSE)
+
+```
+
 
 ## Hi there, again!!
 
