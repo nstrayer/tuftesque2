@@ -1,6 +1,6 @@
 ---
-title: "..."
-author: "..."
+title: "Tuftesque"
+author: "John Doe"
 date: Sys.Date()
 output:
   tuftesque2::tuftesque
@@ -8,14 +8,30 @@ output:
 
 ```{r knitrUserSettings, echo=FALSE, cache=FALSE}
 library(knitr)
-library(rmdformats)
 
 ## Global options
-options(max.print="75")
-opts_chunk$set(message=FALSE,
-               warning=FALSE,
-               fig.asp=0.68, #golden ratio for fig aspect
-               fig.width=7, # decrease this value for faster rendering -but lower quality
-               dpi=200 # decrease this value for faster rendering -but lower quality
-               )
+options(max.print = "75")
+opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  fig.asp = 0.68, #golden ratio for fig aspect
+  fig.width = 7, # decrease this value for faster rendering -but lower quality
+  dpi = 200 # decrease this value for faster rendering -but lower quality
+)
 ```
+
+
+# Tuftesque Reports
+
+You can add side-notes to your report. [It's a handy thing to do!]{.side-note}
+
+```
+[It's a handy thing to do!]{.side-note}
+```
+
+If you want to make a longer sidenote with plots or images you can do that as well. 
+
+::::{.side-note}
+![A cute cat](http://placekitten.com/200/200)
+::::
+
