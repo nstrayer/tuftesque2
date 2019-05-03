@@ -25,13 +25,15 @@ opts_chunk$set(
 
 You can add side-notes to your report. [It's a handy thing to do!]{.side-note}
 
-```
-[It's a handy thing to do!]{.side-note}
-```
+
+![](http://placekitten.com/500/400)
 
 If you want to make a longer sidenote with plots or images you can do that as well. 
 
 ::::{.side-note}
-![A cute cat](http://placekitten.com/200/200)
+
+The [side-note] is your oyster!
+
+![](http://placekitten.com/200/200)
 ::::
 
