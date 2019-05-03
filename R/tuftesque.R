@@ -28,6 +28,7 @@ tuftesque = function() {
         is_sidenote <- grepl('side-note', options$class)
         is_lightbox <- grepl('lightbox', options$class)
 
+
         # If we have both a side-note and a lightbox tag at the same time put two divs instead of one
         # The first one is the side-note div and the second is the lightbox div.
         if (before) {
@@ -45,6 +46,22 @@ tuftesque = function() {
           }
           return(close_tag)
         }
+
+      }
+    ),
+    opts_hooks = list(
+      fig.align = function(options){
+
+        # Center aligning a full-width plot shifts it to the right making it... not full width.
+        has_class <- !is.null(options$class);
+
+        if (has_class) {
+          is_full_width <- grepl('full-width-plot', options$class)
+          if (is_full_width) {
+            options$fig.align <- 'default';
+          }
+        }
+        options
       }
     )
   )
