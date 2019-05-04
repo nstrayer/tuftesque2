@@ -188,6 +188,10 @@ img,
     justify-content: center;
   }
 
+  .side-note .figure {
+    margin-top: calc(var(--expand-button-diameter)/2 + 5px);
+  }
+
   span.side-note {
     padding-top: var(--expand-button-diameter);
     padding-bottom: 0px;

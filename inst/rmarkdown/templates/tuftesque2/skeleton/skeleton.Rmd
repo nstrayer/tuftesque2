@@ -32,10 +32,9 @@ You can add side-notes to your report. [It's a handy thing to do!]{.side-note}
 If you want to make a longer sidenote with plots or images you can do that as well. 
 
 ::::{.side-note}
+![a cute cat](http://placekitten.com/200/200)
 
 The [side-note] is your oyster!
-
-![a cute cat](http://placekitten.com/200/200)
 ::::
 
 
