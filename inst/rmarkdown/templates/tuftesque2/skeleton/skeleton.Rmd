@@ -18,6 +18,8 @@ opts_chunk$set(
   fig.width = 7, # decrease this value for faster rendering -but lower quality
   dpi = 200 # decrease this value for faster rendering -but lower quality
 )
+
+
 ```
 
 
@@ -26,7 +28,6 @@ opts_chunk$set(
 You can add side-notes to your report. [It's a handy thing to do!]{.side-note}
 
 
-![](http://placekitten.com/500/400)
 
 If you want to make a longer sidenote with plots or images you can do that as well. 
 
@@ -34,6 +35,9 @@ If you want to make a longer sidenote with plots or images you can do that as we
 
 The [side-note] is your oyster!
 
-![](http://placekitten.com/200/200)
+![a cute cat](http://placekitten.com/200/200)
 ::::
+
+
+
 

@@ -72,7 +72,8 @@ tuftesque = function() {
     base_format = rmarkdown::html_document(
         theme = NULL,
         css = css,
-        template = html_template
+        template = html_template,
+        df_print = 'kable'
       )
   )
 }
