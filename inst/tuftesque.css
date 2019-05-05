@@ -2,7 +2,7 @@
 
 /* Global CSS variables that control appearance */
 * {
-  --max-page-width: 1100px;
+  --max-page-width: 900px;
   --content-width-prop: 75%;
   --page-side-padding: 0.5rem;
   --expand-button-diameter: 2rem;
@@ -11,6 +11,7 @@
   --text-color: #46585d;
   --code-background: #e7e7e7;
   --side-note-color: #8f8f8f2b;
+  --down-chevron: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='1.5rem' height='1.5rem' fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'> <path d='M30 20 L16 8 2 20'/></svg>");
 }
 
 *,
@@ -19,6 +20,10 @@
   box-sizing: border-box;
 }
 
+/* ============================================================================================ */
+/* Fonts and general settings
+/* ============================================================================================ */
+
 /* Hide the horizontal scroll bars caused by elements spilling over sides */
 body {
   font-size: 14px;
@@ -26,39 +31,6 @@ body {
   background-color: var(--page-color);
   overflow-x: hidden;
   color: var(text-color);
-}
-
-/* ============ Main layout logic ============== */
-
-
-
-.all_content {
-  position: relative;
-  max-width: var(--max-page-width) ;
-  margin-left: auto;
-  margin-right: auto;
-/*   background-color: green; */
-}
-
-/* The main body of the document */
-.container {
-  width: var(--content-width-prop);
-  margin-top: .5rem;
-  padding-left: var(--page-side-padding);
-/*   background-color: steelblue; */
-}
-
-/* Side note styles*/
-/* When viewing on a large screen stick sidenotes on... the side! */
-/* Fonts are lighter and slanty to indicate they're different from the rest */
-.side-note {
-  position: absolute;
-  left: var(--content-width-prop);
-  right: 0;
-  font-style: oblique;
-  font-weight: lighter;
-  padding: 0.5rem;
-/*   background-color: orangered; */
 }
 
 h1,
@@ -70,101 +42,50 @@ h3 {
   padding-left: 0px;
 }
 
-.container h1 {
-  padding-top: 25px;
+
+/* ============================================================================================ */
+/* Main layout logic
+/* ============================================================================================ */
+
+.all_content {
+  position: relative;
+  max-width: var(--max-page-width) ;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.container h2 {
-  padding-top: 20px;
+/* The main body of the document */
+.container {
+  width: var(--content-width-prop);
+  margin-top: .5rem;
+  padding-left: var(--page-side-padding);
 }
-
-.container h3 {
-  padding-top: 15px;
-}
-
-
-
-/* Add a small vertical line to the left of the code output */
-pre {
-  background: var(--code-background);
-  box-shadow: 1px 1px 2px #00000073;
-  border-radius: 2px;
-  padding-left: 0.5em;
-  overflow-x: scroll;
-  padding: 5px 0.6em;
-}
-
-pre.r::before {
-  content: "R";
-  position: absolute;
-  right: calc(100% - var(--content-width-prop));
-  margin-top: -0.5rem;
-  padding-right: 5px;
-  font-size: 1.5rem;
-  text-align: right;
-  color: var(--code-background);
-  filter: brightness(80%);
-}
-
-
-/* ============ Plots and images ============ */
-/* ========================================== */
-
-/* Don't let images spill out of the main body */
-img,
-.side-note img {
-  max-width: 100%;
-}
-
-/* Stretch a plot across the whole width of the screen */
-.full-width-plot img {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(((100% / 0.75) / 2) - 50vw)
-}
-
-
-/* Lightboxed images and plots */
-
-.lightbox.selected {
-	/** Position and style */
-	position: fixed;
-	z-index: 999;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	top: 0;
-	left: 0;
-	background: rgba(0,0,0,0.8);
-}
-
-.lightbox.selected img {
-	/** Pad the lightbox image */
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: auto;
-    max-height: 90%;
-    height: auto;
-    max-width: 90%;
-}
-
-
-/* Styles for when viewing on mobile */
-/* --------------------------------*/
 
 @media (max-width: 600px) {
-
-
   /* The main body of the document */
   .container {
-    width: 100%
+    width: 100%;
     padding-right: var(--page-side-padding);
   }
+}
 
+
+/* ============================================================================================ */
+/* Side-Notes
+/* ============================================================================================ */
+
+/* When viewing on a large screen stick sidenotes on... the side! */
+/* Fonts are lighter and slanty to indicate they're different from the rest */
+.side-note {
+  position: absolute;
+  left: var(--content-width-prop);
+  right: 0;
+  font-style: oblique;
+  font-weight: lighter;
+  padding: 0.5rem;
+}
+
+@media (max-width: 600px) {
 
   /* Side notes fall inline instead of on side */
   .side-note {
@@ -179,7 +100,7 @@ img,
     overflow-y: hidden;
     -webkit-transition: max-height var(--animation-duration) ease-in-out;
     transition: max-height var(--animation-duration) ease-in-out,
-                background-color var(--animation-duration) ease-in-out;
+      background-color var(--animation-duration) ease-in-out;
   }
 
   /* Side notes with images need to have everything centered using grid */
@@ -188,26 +109,22 @@ img,
     justify-content: center;
   }
 
-  .side-note .figure {
-    margin-top: calc(var(--expand-button-diameter)/2 + 5px);
-  }
-
   span.side-note {
     padding-top: var(--expand-button-diameter);
     padding-bottom: 0px;
   }
 
-  /* Adds a little plus icon to click and expand sidenote */
+  /* Adds a little down icon to click and expand sidenote */
   .side-note::after {
     content: '';
-    background: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='1.5rem' height='1.5rem' fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'> <path d='M30 20 L16 8 2 20'/></svg>");
+    background: var(--down-chevron);
     background-position: center;
     background-repeat: no-repeat;
+    background-color: var(--page-color);
     border: 1px solid black;
+    border-radius: 50%;
     width: var(--expand-button-diameter);
     height: var(--expand-button-diameter);
-    border-radius: 50%;
-    background-color: var(--page-color);
     left: calc(50vw - var(--expand-button-diameter)/2);
     cursor: pointer;
     transform: rotate(-180deg);
@@ -230,16 +147,6 @@ img,
     position: absolute;
   }
 
-  .side-note .lightbox {
-     margin-top: var(--expand-button-diameter);
-  }
-
-  .side-note .lightbox.selected {
-     margin-top: 0;
-  }
-
-  /* Interaction/ Animation logic */
-
   /* When the user taps the shrunken side-note it expands */
   .side-note.selected {
     max-height: 1000px;
@@ -249,17 +156,151 @@ img,
   .side-note.selected::after {
     transform: rotate(0deg);
   }
-
-  .full-width-plot img {
-    margin: 0 calc(-50vw + 50%);
-  }
+}
 
 
+/* ============================================================================================ */
+/* Section paddings
+/* ============================================================================================ */
+.container h1 {
+  padding-top: 30px;
+}
+
+.container h2 {
+  padding-top: 25px;
+}
+
+.container h3 {
+  padding-top: 20px;
+}
+
+
+/* ============================================================================================ */
+/* Code chunks
+/* ============================================================================================ */
+
+pre {
+  background: var(--code-background);
+  box-shadow: 1px 1px 2px #00000073;
+  border-radius: 2px;
+  overflow-x: scroll;
+  padding: 5px 0.6em;
+}
+
+/* Append an R to the right of R code */
+pre.r::before {
+  content: "R";
+  position: absolute;
+  right: calc(100% - var(--content-width-prop));
+  margin-top: -0.5rem;
+  padding-right: 5px;
+  font-size: 1.5rem;
+  color: var(--code-background);
+  opacity: 0.3;
+  filter: brightness(80%);
+}
+
+@media (max-width: 600px) {
   pre.r::before {
-    right: 0;
+    right: 0.25em;
   }
 }
 
+
+/* ============================================================================================ */
+/* Plots and images
+/* ============================================================================================ */
+
+/* Don't let images spill out of the main body */
+img,
+.side-note img {
+  max-width: 100%;
+}
+
+/* Stretch a plot across the whole width of the screen */
+.full-width-plot img {
+  width: 100vw;
+  max-width: 100vw;
+  /* The 3px here is super hacky and due to the padding-left on the container element */
+  margin-left: calc(((100% / 0.75) / 2) - 50vw - 3px);
+}
+
+@media (max-width: 600px) {
+
+  .side-note .figure {
+    margin-top: calc(var(--expand-button-diameter)/2 + 5px);
+  }
+
+  .side-note .lightbox {
+    margin-top: var(--expand-button-diameter);
+  }
+
+  .side-note .lightbox.selected {
+    margin-top: 0;
+  }
+
+/*   Things are much simpler when we have centered content.  */
+  .full-width-plot img {
+    margin-left: calc(-50vw + 50%);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+
+/* ============================================================================================ */
+/* Figure captions
+/* ============================================================================================ */
+.caption {
+  margin-top: 0;
+  font-style: oblique;
+}
+.caption::before {
+  content: '';
+  border: 1px solid grey;
+  margin-right: 0.25em;
+}
+
+
+/* ============================================================================================ */
+/* Lightboxes!
+/* ============================================================================================ */
+
+/* Style activated by the addition of the selected class */
+.lightbox.selected {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  -webkit-transition: background 300ms ease-in-out;
+  -moz-transition: background 300ms ease-in-out;
+  -o-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+  background: rgba(0,0,0,0.8);
+}
+
+.lightbox.selected img {
+  /** Pad the lightbox image */
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  max-width: 95%;
+  height: auto;
+  max-height: 90%;
+}
+
+
+
+/* ============================================================================================ */
+/* Header/Intro
+/* ============================================================================================ */
 .author,
 .date,
 .title {
@@ -300,16 +341,3 @@ img,
 }
 
 
-
-/* ============================================================================================ */
-/* Figure caption style
-/* ============================================================================================ */
-.caption {
-  margin-top: 0;
-  font-style: oblique;
-}
-.caption::before {
-  content: '';
-  border: 1px solid grey;
-  margin-right: 0.25em;
-}
